@@ -1,0 +1,64 @@
+version: "3.9"
+services:
+  #aplicação web (PHP+NGINX)
+  web:
+    # image: christiantorres/php-community:8.0.19-fpm-nginx
+    # image: serversideup/php:8.1-fpm-nginx-v2.2.0
+    # image: urnau/php-community:latest
+    platform: linux/arm64
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    networks:
+      - net_principal
+    volumes:
+      - ./applications:/var/www
+      - ./docker/nginx/sites:/etc/nginx/sites-available
+    ports:
+      - "80:80" #http
+      - "443:443" #https
+      - "8080:8080"
+      - "8081:8081"
+      - "8082:8082"
+      - "8083:8083"
+      - "8084:8084"
+      - "8085:8085"
+      - "8086:8086"
+      - "8087:8087"
+      - "8088:8088"
+      - "8089:8089"
+    depends_on:
+      - redis
+      - mysql
+
+  # aplicação MySQL
+  mysql:
+    image: mysql:8
+    platform: linux/amd64
+    # command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      # MYSQL_ROOT_PASSWORD:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: crudapi
+    networks:
+      - net_principal
+    ports:
+      - 30000:3306
+  # aplicação Redis
+  redis:
+    image: redis:7-alpine
+    restart: always
+    networks:
+      - net_principal
+    ports:
+      - 6379:6379
+
+networks:
+  net_principal:
+
+volumes:
+  mysql_data:
+    driver: local

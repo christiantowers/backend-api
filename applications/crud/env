@@ -1,0 +1,111 @@
+#--------------------------------------------------------------------
+
+# Example Environment Configuration file
+
+#
+
+# This file can be used as a starting point for your own
+
+# custom .env files, and contains most of the possible settings
+
+# available in a default install.
+
+#
+
+# By default, all of the settings are commented out. If you want
+
+# to override the setting, you must un-comment it by removing the '#'
+
+# at the beginning of the line.
+
+#--------------------------------------------------------------------
+
+#--------------------------------------------------------------------
+
+# ENVIRONMENT
+
+#--------------------------------------------------------------------
+
+# CI_ENVIRONMENT = production
+
+CI_ENVIRONMENT = development
+
+#--------------------------------------------------------------------
+
+# APP
+
+#--------------------------------------------------------------------
+
+# app.baseURL = ''
+
+# If you have trouble with `.`, you could also use `_`.
+
+# app_baseURL = ''
+
+# app.forceGlobalSecureRequests = false
+app.CORS.allowOrigins = *
+app.CORS.allowedOrigins = *
+app.CORS.allowedMethods = GET, POST, OPTIONS, PUT, DELETE
+app.CORS.allowedHeaders = Content-Type, Authorization, X-Requested-With
+# app.CSPEnabled = false
+
+#--------------------------------------------------------------------
+
+# DATABASE
+
+#--------------------------------------------------------------------
+
+database.default.hostname = 127.0.0.1
+database.default.database = crudapi
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
+database.default.port = 3306
+database.default.socket = /Applications/XAMPP/xamppfiles/var/mysql/mysql.sock
+
+# If you use MySQLi as tests, first update the values of Config\Database::$tests.
+
+# database.tests.hostname = localhost
+
+# database.tests.database = ci4_test
+
+# database.tests.username = root
+
+# database.tests.password = root
+
+# database.tests.DBDriver = MySQLi
+
+# database.tests.DBPrefix =
+
+# database.tests.charset = utf8mb4
+
+# database.tests.DBCollat = utf8mb4_general_ci
+
+# database.tests.port = 3306
+
+#--------------------------------------------------------------------
+
+# ENCRYPTION
+
+#--------------------------------------------------------------------
+
+# encryption.key =
+
+#--------------------------------------------------------------------
+
+# SESSION
+
+#--------------------------------------------------------------------
+
+# session.driver = 'CodeIgniter\Session\Handlers\FileHandler'
+sessionDriver = RedisHandler
+sessionSavePath = tcp://redis:6379
+# session.savePath = null
+
+#--------------------------------------------------------------------
+
+# LOGGER
+
+#--------------------------------------------------------------------
+
+# logger.threshold = 4

@@ -72,6 +72,11 @@ CREATE TABLE crudapi.users (
 	PRIMARY KEY (id)
 )
 
+-- indices para otimização
+ALTER TABLE crudapi.users ADD UNIQUE INDEX idx_email (email);
+ALTER TABLE crudapi.users ADD INDEX idx_name (name);
+ALTER TABLE crudapi.users ADD INDEX idx_created_at (created_at);
+
 
 INSERT INTO crudapi.users(id, name, email, password, created_at) VALUES (1, 'christian', 'christian@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '2025-02-06 11:57:19');
 INSERT INTO crudapi.users(id, name, email, password, created_at) VALUES (2, 'root', 'root@mail.com', '$2y$10$Pc/pIpUr9cM6td6VuI5F2OcozfeNYZXe5HHJIVFSdfcCmM8NLkyE.', '2025-02-06 14:40:41');
@@ -87,6 +92,13 @@ CREATE TABLE crudapi.products (
 	updated_at timestamp DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (id)
 )
+
+-- indices para otimização
+ALTER TABLE crudapi.products ADD INDEX idx_name (name);
+ALTER TABLE crudapi.products ADD INDEX idx_price (price);
+ALTER TABLE crudapi.products ADD INDEX idx_stock_quantity (stock_quantity);
+ALTER TABLE crudapi.products ADD INDEX idx_created_at (created_at);
+ALTER TABLE crudapi.products ADD INDEX idx_updated_at (updated_at);
 
 
 INSERT INTO crudapi.products(id, name, description, price, stock_quantity, created_at, updated_at) VALUES (1, 'Smartphone X', 'Smartphone com tela OLED de 6.5 polegadas', 2999.99, 50, '2025-02-07 20:41:58', '2025-02-07 20:41:58');

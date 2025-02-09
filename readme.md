@@ -19,6 +19,17 @@ cd backend-api
 Crie ou ajuste o arquivo `.env` com as configurações (conforme seus enderecos locais):
 
 ```
+applications/crud/.env
+```
+
+```
+CI_ENVIRONMENT = development
+
+app.CORS.allowOrigins = *
+app.CORS.allowedOrigins = *
+app.CORS.allowedMethods = GET, POST, OPTIONS, PUT, DELETE
+app.CORS.allowedHeaders = Content-Type, Authorization, X-Requested-With
+
 database.default.hostname = 127.0.0.1
 database.default.database = crudapi
 database.default.username = root

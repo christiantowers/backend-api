@@ -1,5 +1,7 @@
 # Backend - API CRUD com PHP e Docker
 
+Esta é uma API RESTful desenvolvida em PHP para gerenciamento de usuários e produtos. A aplicação utiliza JWT para autenticação e é executada em um ambiente Docker, incluindo MySQL e Redis.
+
 ## **Pré-requisitos**
 
 - Docker e Docker Compose instalados ([Instalação Docker](https://docs.docker.com/get-docker/))
